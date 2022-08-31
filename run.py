@@ -39,10 +39,11 @@ def main():
 
         now = datetime.datetime.utcnow().isoformat() + 'Z'
         print('Getting the upcoming 10 events')
+
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=10, singleEvents=True,
-                                              orderBy='startTime').execute()
-        events = events_result.get('items', [])
+                                            maxResults=10, singleEvents=True,
+                                            orderBy='startTime').execute()
+        events = events_result.get('items', 'calendarId')
 
         if not events:
             print('No upcoming events found.')
@@ -80,8 +81,8 @@ def info():
     EVENT = {
         'summary': 'Team Dinner',
         'location': 'FML, Pune',
-        'start': {'dateTime': '2022-08-27T19:00:00%s' % GMT_OFF},
-        'end': {'dateTime': '2022-08-27T22:00:00%s' % GMT_OFF},
+        'start': {'dateTime': '2022-08-30T14:30:00%s' % GMT_OFF},
+        'end': {'dateTime': '2022-08-30T15:00:00%s' % GMT_OFF},
         'attendees': [
             {'email': 'apoorv@rapidinnovation.dev'},
             {'email': 'reshmasadhu@rapidinnovation.dev'},
